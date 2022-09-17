@@ -4,9 +4,29 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Site de vendas</title>
 </head>
 <body>
-    <h1>Importante ein</h1>
+    <h1>Produtos</h1>
+    <br>
+    <table border="1">
+        <tr>
+            <th>Produto</th>
+            <th>Preço</th>
+            <th>Data de publicação</th>
+        </tr>
+        
+    {% for produto in produtos%}
+        <tr>
+            <td><a href="{% url 'read' produto.id %}">{{ produto.titulo }}</a></td> 
+            <td>{{ produto.valor }}</td>
+            <td>{{ produto.date_publicacao }}</td>
+        </tr>
+    {% endfor %}
+    </table>
+    <br>
+    <form action="create" method="get">
+        <button class="submit">Publicar novo produto</button>
+    </form>
 </body>
 </html>
